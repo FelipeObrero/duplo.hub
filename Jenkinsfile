@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t flofree/duplo-hub:v1 .'
+        sh 'docker build -t flofree/duplo-hub:v2 .'
       }
     }
     stage('Login') {
@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'docker push flofree/duplo-hub:v1'
+        sh 'docker push flofree/duplo-hub:v2'
       }
     }
   }
