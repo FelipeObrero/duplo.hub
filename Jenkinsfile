@@ -9,23 +9,23 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        bat 'docker build -t flofree/duplo-hub:vbat .'
+        sh 'docker build -t flofree/duplo-hub:v1 .'
       }
     }
     stage('Login') {
       steps {
-        bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
       }
     }
     stage('Push') {
       steps {
-        bat 'docker push flofree/duplo-hub:vbat'
+        sh 'docker push flofree/duplo-hub:v1'
       }
     }
   }
   post {
     always {
-      bat 'docker logout'
+      sh 'docker logout'
     }
   }
 }
